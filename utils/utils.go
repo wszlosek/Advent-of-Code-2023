@@ -1,4 +1,4 @@
-package main
+package utils
 
 import (
 	"log"
@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func readLines(path string) []string {
+func ReadLines(path string) []string {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		log.Fatal(err)
@@ -17,15 +17,15 @@ func readLines(path string) []string {
 	return lines
 }
 
-func toInt(str string) (int, error) {
+func ToInt(str string) (int, error) {
 	return strconv.Atoi(str)
 }
 
-func toString(integer int) string {
+func ToString(integer int) string {
 	return strconv.Itoa(integer)
 }
 
-func getKeys(m map[string]int) []string {
+func GetKeys(m map[string]int) []string {
 	var keys []string
 	for key := range m {
 		keys = append(keys, key)

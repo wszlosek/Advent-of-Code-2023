@@ -1,6 +1,7 @@
 package main
 
 import (
+	"adventOfCode/utils"
 	"strings"
 	"unicode"
 )
@@ -37,10 +38,10 @@ func getFirstNumberWithWords(line string) string {
 			return string(s)
 		}
 
-		for _, key := range getKeys(numbers) {
+		for _, key := range utils.GetKeys(numbers) {
 			if strings.Contains(line[0:i+1], key) {
 				value, _ := numbers[key]
-				return toString(value)
+				return utils.ToString(value)
 			}
 		}
 	}
@@ -69,10 +70,10 @@ func getLastNumberWithWords(line string) string {
 			return string(character[i])
 		}
 
-		for _, key := range getKeys(numbers) {
+		for _, key := range utils.GetKeys(numbers) {
 			if strings.Contains(line[i:], key) {
 				value, _ := numbers[key]
-				return toString(value)
+				return utils.ToString(value)
 			}
 		}
 	}
@@ -80,7 +81,7 @@ func getLastNumberWithWords(line string) string {
 	return ""
 }
 
-func first(lines []string) int {
+func sumNumbers(lines []string) int {
 	var numbers []string
 	for _, line := range lines {
 		a := getFirstNumber(line)
@@ -90,14 +91,14 @@ func first(lines []string) int {
 
 	result := 0
 	for _, number := range numbers {
-		i, _ := toInt(number)
+		i, _ := utils.ToInt(number)
 		result += i
 	}
 
 	return result
 }
 
-func second(lines []string) int {
+func sumNumbersWithWords(lines []string) int {
 	var numbers []string
 	for _, line := range lines {
 		a := getFirstNumberWithWords(line)
@@ -107,7 +108,7 @@ func second(lines []string) int {
 
 	result := 0
 	for _, number := range numbers {
-		i, _ := toInt(number)
+		i, _ := utils.ToInt(number)
 		result += i
 	}
 
@@ -115,7 +116,7 @@ func second(lines []string) int {
 }
 
 func main() {
-	lines := readLines("input/day01.txt")
-	println(first(lines))
-	println(second(lines))
+	lines := utils.ReadLines("input/day01.txt")
+	println(sumNumbers(lines))
+	println(sumNumbersWithWords(lines))
 }
